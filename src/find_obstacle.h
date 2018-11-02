@@ -54,16 +54,15 @@ class ObstacleFinder
     
     // The angle corresponding to the closest 
     float angle = range_index * scan->angle_increment;
-    // This angle is COUNTER CLOCKWISE from the direction of the first sample which is
-    // FORWARD. This corresponds to the default of the rplidar is with cable towards the back
-    // Important difference with the physical rplidar is that it scans in the CLOCKWISE direction.
+    // This angle is CLOCKWISE from the direction of the first sample which is
+    // FORWARD. This corresponds to the default of the rplidar,
+    // which is supposed to be mounted with  cable towards the back.
 
-    
     // Publish the position of the closest obstacle as a point in local tf with x pointing forward
     // and y to the left.
     geometry_msgs::Point obstacle_msg;
     obstacle_msg.x = range*cos(angle);
-    obstacle_msg.y = range*sin(angle);
+    obstacle_msg.y = -range*sin(angle);
     obstacle_msg.z = range;
     obstacle_pub_.publish(obstacle_msg);
     
