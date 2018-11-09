@@ -1,0 +1,8 @@
+# Define the goal
+float32 distance   # The distance to the obstacle when completed
+---
+# Define the result
+float32 actual_distance  # As above
+---
+# Define feedback message
+float32 current_distance # As above

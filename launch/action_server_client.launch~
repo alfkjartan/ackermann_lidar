@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="imview" pkg="image_view" type="image_view">
+  <remap from="image" to="/ackermann_vehicle/camera1/image_raw"/>
+</node>
+<node name="teleop" pkg="control_coche" type="car_teleop" output="screen"/>
+</launch>

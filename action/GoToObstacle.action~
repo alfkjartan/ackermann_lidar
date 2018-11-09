@@ -1,0 +1,8 @@
+# Define the goal
+float32 distance   # The distance to the obstacle when completed the turn
+---
+# Define the result
+float32 angle  # Angle (in radians) to the obstacle, measured CCW with 0 straight ahead
+---
+# Define feedback message
+float32 current_angle # Same definition as angle

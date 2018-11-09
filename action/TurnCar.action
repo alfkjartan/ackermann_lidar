@@ -1,0 +1,8 @@
+# Define the goal
+float32 angle   # The desired angle (in radians) to the obstacle, measured CCW with 0 straight aheadangle to the obstacle 
+---
+# Define the result
+float32 actual_angle  # Actual angle to the obstacle
+---
+# Define feedback message
+float32 current_angle # Same definition as angle
