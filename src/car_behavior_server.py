@@ -93,7 +93,7 @@ class ObstacleAvoiderServer:
     speed = 0
     theta = 0
     
-    # If change in distance is less than 1% consider converged
+    # If change in distance is less than 2mm or 2cm from goal consider converged
     if ( dist_change < 0.002 or distance_to_go < 0.02) :
       self.distance_converged = True
       am = AckermannDriveStamped()
