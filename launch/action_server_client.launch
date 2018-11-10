@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+  <node name="publish_wheel_angles" pkg="ackermann_lidar" type="publish_wheel_angle_node" output="screen"/>
   <node name="find_obstacle" pkg="ackermann_lidar" type="find_obstacle_node" output="screen"/>
   <node name="car_behavior_server" pkg="ackermann_lidar" type="car_behavior_server.py" output="screen"/>
   <node name="car_behavior_client" pkg="ackermann_lidar" type="go_to_obstacle_and_turnaround.py" output="screen"/>
