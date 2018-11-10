@@ -22,11 +22,11 @@ from ackermann_lidar.msg import GoToObstacleResult, TurnCarResult
 class ObstacleAvoiderServer:
   def __init__(self):
     self.go_to_obstacle_server = actionlib.SimpleActionServer('go_to_obstacle', GoToObstacleAction,
-                                               self.executeGoToObstacle, False)
+                        self.executeGoToObstacle, False)
     self.go_to_obstacle_server.start()
 
     self.turn_car_server = actionlib.SimpleActionServer('turn_car', TurnCarAction,
-                                               self.executeTurnCar, False)
+                        self.executeTurnCar, False)
     self.turn_car_server.start()
 
     self.goal_distance = -1
@@ -38,13 +38,14 @@ class ObstacleAvoiderServer:
     
   def executeGoToObstacle(self, goal):
     am_pub = rospy.Publisher("/ackermann_vehicle/ackermann_cmd", AckermannDriveStamped, queue_size=4)
-    sub = rospy.Subscriber("/obstacle", Point, self.goToObstacleCallback, am_pub)
+    sub = rospy.Subscriber("/obstacle", Point,
+                           self.goToObstacleCallback, am_pub)
 
     fb = GoToObstacleFeedback()
 
     self.goal_distance = goal.distance
     while (not self.distance_converged) :
-      rospy.sleep(0.01)
+      rospy.sleep(0.1)
       fb.current_distance = self.current_distance
       self.go_to_obstacle_server.publish_feedback(fb)
 
@@ -94,7 +95,8 @@ class ObstacleAvoiderServer:
     theta = 0
     
     # If change in distance is less than 2mm or 2cm from goal consider converged
-    if ( dist_change < 0.002 or distance_to_go < 0.02) :
+    #if ( dist_change < 0.002 or distance_to_go < 0.02) :
+    if ( distance_to_go < 0.02) :
       self.distance_converged = True
       am = AckermannDriveStamped()
       am.drive.steering_angle = 0

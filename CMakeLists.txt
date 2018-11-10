@@ -145,6 +145,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/ackermann_lidar_node.cpp)
 add_executable(find_obstacle_node src/find_obstacle.cpp)
 add_executable(goto_obstacle_node src/go_to_obstacle.cpp)
+add_executable(publish_wheel_angle_node src/publish_wheel_angles.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -158,6 +159,8 @@ add_executable(goto_obstacle_node src/go_to_obstacle.cpp)
 # )
 add_dependencies(find_obstacle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(goto_obstacle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(publish_wheel_angle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
@@ -170,6 +173,10 @@ add_dependencies(goto_obstacle_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin
  target_link_libraries(goto_obstacle_node
    ${catkin_LIBRARIES}
 )
+ target_link_libraries(publish_wheel_angle_node
+   ${catkin_LIBRARIES}
+)
+
 
 #############
 ## Install ##

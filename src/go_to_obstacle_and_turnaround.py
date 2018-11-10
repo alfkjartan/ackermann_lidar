@@ -49,7 +49,7 @@ if __name__ == '__main__':
     turn_car_client.wait_for_server()
 
     goal = TurnCarGoal()
-    goal.angle = np.pi/2
+    goal.angle = -np.pi/2
 
     rospy.loginfo("Sending goal %f to turn_car" % goal.angle)
     turn_car_client.send_goal(goal)
